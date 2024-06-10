@@ -74,7 +74,7 @@ function App() {
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor="message">Message *</label>
+        <label htmlFor="message">Messages *</label>
         <textarea id="message" className='border-2 rounded-md min-h-48 p-2' name='message' onChange={formdataOnchange}></textarea>
         <span className='text-red-600 hidden'>This field is required</span>
       </div>
