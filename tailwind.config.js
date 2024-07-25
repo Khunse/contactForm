@@ -16,10 +16,17 @@ export default {
       },
       colors:{
         'root-color' : 'hsl(148, 38%, 91%)',
-      'panel-color' : 'hsl(0, 0%, 100%)'
+      'panel-color' : 'hsl(0, 0%, 100%)',
+      '--redcolor' : 'blue'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({addBase, theme}) {
+      addBase({
+        ':root' : theme('colors')
+      });
+    }
+  ],
 }
 
