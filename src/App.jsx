@@ -25,6 +25,10 @@ function App() {
 
   };
 
+  const emailVf= email => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email) || 'Invalid email address';
+  }
 
   return (
     <div className='flex min-h-screen items-center justify-center font-mycusRegFon bg-root-color'>
@@ -51,7 +55,7 @@ function App() {
 
       <div className='flex flex-col gap-3'>
         <label htmlFor='emailAddress'>Email Address *</label>
-        <input type='text' id='emailAddress' name='emailAddress' {...register('email',{required: 'email is required!'})}  className={`border-2 ${errors.email && 'border-red-600'} rounded-md p-2`}/>
+        <input type='text' id='emailAddress' name='emailAddress' {...register('email',{required: 'email is required!', validate: emailVf})}  className={`border-2 ${errors.email && 'border-red-600'} rounded-md p-2`}/>
         <span className={errors.email ? ' text-red-600' :'hidden'}>{errors.email && errors.email.message}</span>
       </div>
 
