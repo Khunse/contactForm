@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import ContactForm from './ContactForm'
 import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -15,13 +16,19 @@ function App() {
   ]);
 
   const { register, handleSubmit, formState : {errors} } = useForm();
+const notify = () => {
+  toast.custom(<div className='cust_toast'>
+  <h1><i></i>Message Sent!</h1>
+  <p>
+    Thanks for completing the form. We'll be in touch soon!
+  </p>
+  </div>);
+};
 
-  const formdataOnchange = e => {
-    setformdata({...formdata, [e.target.name] : e.target.value});
-  };
 
   const formHandler = e => {
     console.log('formm data :: ',e);
+    notify();
 
   };
 
@@ -32,7 +39,7 @@ function App() {
 
   return (
     <div className='flex min-h-screen items-center justify-center font-mycusRegFon bg-root-color'>
-        <div className='bg-panel-color p-5 rounded-lg my-8'>
+        <div className='bg-panel-color p-5 rounded-lg formd my-28'>
      <form className='flex flex-col gap-6' onSubmit={handleSubmit(formHandler)}>
 
       <h1 className='font-mycusBoldFon text-3xl'>Contact Us</h1>
@@ -85,7 +92,7 @@ function App() {
 
       <div className='flex flex-col'>
         <label htmlFor="message">Messages *</label>
-        <textarea id="message" className={`border-2 rounded-md min-h-48 p-2 ${errors.message && 'border-red-600'}`} {...register('message',{required: 'This field is required'})}  name='message'></textarea>
+        <textarea id="message" className={`border-2 rounded-md min-h-48 p-2 hover:cursor-pointer ${errors.message && 'border-red-600'}`} {...register('message',{required: 'This field is required'})}  name='message'></textarea>
         <span className={errors.message ? ' text-red-600' :'hidden'}>{errors.message && errors.message.message}</span>
       </div>
 
@@ -100,13 +107,14 @@ function App() {
       <span className={errors.chBox ? ' text-red-600' :'hidden'}>{errors.chBox && errors.chBox.message}</span>
         </div>
 
-      <button className='p-4 text-panel-color bg-green-800 w-full rounded-lg'>Submit</button>
+      <button className='p-4 text-panel-color bg-green-800 w-full rounded-lg subBtn'>Submit</button>
       
      </form>
-
         {/* <ContactForm /> */}
 
       </div>
+      
+      <Toaster />
     </div>
   )
 }

@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+.formd {
+min-width: 40%;
+}
+
 input:focus{
  outline: none;
  border: 2px solid cadetblue;   
@@ -19,6 +23,11 @@ padding: 2px;
 }
 .radio:hover {
     cursor: pointer;
+}
+
+input:hover{
+    cursor: pointer;
+    border-color: green;
 }
 
 .cus_radio::after {
@@ -42,7 +51,7 @@ padding: 2px;
 
  .radio_main:has(.radio_input:checked) {
     border-color:  green;
-    background-color: greenyellow;
+    background-color: #E0F1E7;
     transition: border-color 1000ms;
     transition: background-color 1000ms;
 }
@@ -71,4 +80,16 @@ position: relative;
     background-color: green;
     border-color: green;
     transition:  border-color 1000ms, background-color 1000ms;
+}
+
+.cust_toast {
+    padding: 25px;
+    background-color: #2A4244;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+.subBtn:hover {
+    background-color: #063F36;
 }
